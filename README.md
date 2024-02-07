@@ -5,6 +5,8 @@ Welcome to NetNavi Explorer, an immersive web application inspired by the iconic
 
 For a glimpse into our development process and future plans, check out the [Trello Board](https://trello.com/b/NITLXd1g/netnavi-explorer)!
 
+The ERD and Component Hierarchy Diagrams can be found [here](https://lucid.app/lucidchart/602c5dd0-e1d5-48ba-b0e4-417b74f922a6/edit?invitationId=inv_4ea253c2-c1de-4263-a392-c641ecedb8ea).
+
 ## Features
 - **Interactive Map of ACDC Town**: Clickable locations revealing information about the Mega Man Battle Network series' beloved characters.
 - **Battle Chip Catalog**: An interactive list of Battle Chips available at Higsby's Shop, complete with descriptions and effects.
