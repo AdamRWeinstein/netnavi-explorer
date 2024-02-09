@@ -1,15 +1,20 @@
+import './App.css'
+import { Routes, Route } from 'react-router-dom';
 import Map from './components/Map'
 import NavBar from './components/NavBar'
-import './App.css'
+import CharacterPage from './components/CharacterPage';
 
 function App() {
 
   return (
-    <div>
+    <>
       <NavBar />
-      <Map />
-    </div>
+      <Routes>
+        <Route path="/" element={<Map />} />
+        <Route path="/character/:name" element={<CharacterPage />} />
+      </Routes>
+    </>
   )
 }
 
-export default App
+export default App;

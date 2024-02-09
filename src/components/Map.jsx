@@ -7,8 +7,11 @@ import YaisHouse from '../assets/YaisHouse.jsx'
 import MaylsHouse from '../assets/MaylsHouse.jsx'
 import DexsHouse from '../assets/DexsHouse.jsx'
 import HigsbysShop from '../assets/HigsbysShop.jsx'
+import { useNavigate } from "react-router-dom";
 
 const Map = () => {
+    const navigate = useNavigate();
+
     return (
         <TransformWrapper
             initialScale={1}
@@ -31,7 +34,7 @@ const Map = () => {
                             id="Yai"
                             SVG={YaisHouse}
                             width='163px'
-                            onClick={() => console.log("CLICK")}
+                            onClick={() => navigate('/character/Yai-Ayanokoji')}
                             style={{
                                 position: 'absolute',
                                 left: '536px',
