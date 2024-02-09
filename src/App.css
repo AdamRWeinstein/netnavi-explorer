@@ -1,6 +1,10 @@
+body {
+  background-color: black;
+}
+
 .navbar {
   width: 100%;
-  background-color: #f0f0f0; /* Example background color */
+  background-color: lightslategray; /* Example background color */
   padding: 10px 0;
 }
 
@@ -24,4 +28,10 @@
 
 .pet {
   margin-left: auto; /* Pushes the PET link to the right */
+}
+
+.svg-clickable-area {
+  fill: none;
+  pointer-events: all;
+  cursor: pointer;
 }
