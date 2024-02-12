@@ -45,7 +45,7 @@ const Map = () => {
                             id="Lan"
                             SVG={LansHouse}
                             width='120px'
-                            onClick={() => console.log("CLICK")}
+                            onClick={() => navigate('/character/Lan-Hikari')}
                             style={{
                                 position: 'absolute',
                                 left: '392px',
@@ -56,7 +56,7 @@ const Map = () => {
                             id="Mayl"
                             SVG={MaylsHouse}
                             width='133px'
-                            onClick={() => console.log("CLICK")}
+                            onClick={() => navigate('/character/Mayl-Sakurai')}
                             style={{
                                 position: 'absolute',
                                 left: '253px',
@@ -67,7 +67,7 @@ const Map = () => {
                             id="Dex"
                             SVG={DexsHouse}
                             width='139px'
-                            onClick={() => console.log("CLICK")}
+                            onClick={() => navigate('/character/Dex-Oyama')}
                             style={{
                                 position: 'absolute',
                                 left: '722px',
@@ -78,7 +78,7 @@ const Map = () => {
                             id="Higsby"
                             SVG={HigsbysShop}
                             width='108px'
-                            onClick={() => console.log("CLICK")}
+                            onClick={() => navigate('/character/Higsby')}
                             style={{
                                 position: 'absolute',
                                 left: '732px',

@@ -10,12 +10,11 @@ const CharacterPage = () => {
     const fetchData = async () => {
       try {
         //TODO update call to backend away from localhost
-        console.log(`http://localhost:4000/character/${name}`)
-        const response = await axios.get(`http://localhost:4000/character/${name}`); 
+        const response = await axios.get(`http://localhost:4000/character/${name}`);
         setCharacterData(response.data);
         console.log(response.data)
       } catch (error) {
-        console.error('Error adding ride:', error);
+        console.error('Error fetching character:', error);
       }
     };
 
@@ -23,10 +22,26 @@ const CharacterPage = () => {
   }, [name]);
 
   return (
-    <div>
-      <img src={characterData?.characterImagePath} alt={characterData?.name} />
-      <img src={characterData?.naviImagePath} alt={characterData?.naviName} />
-    </div>
+    characterData && <>
+      <h1>{characterData?.name}</h1>
+      <div className='content-container'>
+        <div className='character-container'>
+          <img
+            className='character'
+            src={characterData?.characterImagePath}
+            alt={characterData?.name}
+          />
+        </div>
+        <div className='navi-container'>
+          <img
+            className='navi'
+            src={characterData?.naviImagePath}
+            alt={characterData?.naviName}
+          />
+        </div>
+      </div>
+      <div className='description'>{characterData?.description}</div>
+    </>
   );
 };
 
