@@ -12,7 +12,6 @@ const CharacterPage = () => {
         //TODO update call to backend away from localhost
         const response = await axios.get(`http://localhost:4000/character/${name}`);
         setCharacterData(response.data);
-        console.log(response.data)
       } catch (error) {
         console.error('Error fetching character:', error);
       }
