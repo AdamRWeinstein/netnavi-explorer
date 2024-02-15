@@ -91,15 +91,8 @@ h1 {
   align-items: center;
 }
 
-.button-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-
-.map-container {
-  height: 1000px;
+.shop-container {
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
