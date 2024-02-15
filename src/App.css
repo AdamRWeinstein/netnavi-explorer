@@ -92,7 +92,6 @@ h1 {
 }
 
 .shop-container {
-  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
