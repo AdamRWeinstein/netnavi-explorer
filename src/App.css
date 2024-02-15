@@ -36,7 +36,7 @@ h1 {
 }
 
 .svg-clickable-area {
-  /* fill: none; */
+  fill: none;
   pointer-events: all;
   cursor: pointer;
 }
