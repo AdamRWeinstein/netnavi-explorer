@@ -1,7 +1,7 @@
 import React from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import ClickableRegion from "./ClickableRegion";
-import acdcTownMap from '../assets/ACDCTownMap.png';
+import acdcTownMap from '../../public/assets/ACDCTownMap.png'
 import LansHouse from '../assets/LansHouse.jsx';
 import YaisHouse from '../assets/YaisHouse.jsx'
 import MaylsHouse from '../assets/MaylsHouse.jsx'
@@ -30,7 +30,7 @@ const Map = () => {
                             <button onClick={() => zoomToElement("Dex", 3)}>Dex&apos;s House</button>
                         </div>
                         <div className="tools">
-                            <button onClick={() => zoomToElement("Higsby", 3)}>Higsby&apos;s Shop</button>
+                            <button onClick={() => zoomToElement("Shop", 3)}>Higsby&apos;s Shop</button>
                         </div>
                         <TransformComponent
                             wrapperStyle={{ maxWidth: "100%", maxHeight: "100%" }}
@@ -80,10 +80,10 @@ const Map = () => {
                                 }}
                             />
                             <ClickableRegion
-                                id="Higsby"
+                                id="Shop"
                                 SVG={HigsbysShop}
                                 width='108px'
-                                onClick={() => navigate('/character/Higsby')}
+                                onClick={() => navigate('/shop')}
                                 style={{
                                     position: 'absolute',
                                     left: '732px',
