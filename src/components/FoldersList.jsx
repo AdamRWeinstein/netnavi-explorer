@@ -25,7 +25,7 @@ const FolderPage = () => {
     e.preventDefault();
     try {
       // Replace this URL with your actual endpoint for folder creation
-      const response = await axios.post(`/folders/${userCode}`, { name: newFolderName });
+      const response = await axios.post(`https://netnavi-explorer-backend-7b5ffe27ba68.herokuapp.com/folders/${userCode}`, { name: newFolderName });
       setFolders([...folders, response.data]);
       setNewFolderName('');
     } catch (error) {
@@ -35,7 +35,7 @@ const FolderPage = () => {
 
   const handleDeleteFolder = async (folderId) => {
     try {
-      await axios.delete(`/folders/${userCode}/${folderId}`);
+      await axios.delete(`https://netnavi-explorer-backend-7b5ffe27ba68.herokuapp.com/folders/${userCode}/${folderId}`);
       // Filter out the deleted folder from the folders state
       setFolders(folders.filter(folder => folder._id !== folderId));
     } catch (error) {

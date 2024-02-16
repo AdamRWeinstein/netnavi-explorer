@@ -19,7 +19,7 @@ const FolderPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/battlechips')
+        const response = await axios.get('https://netnavi-explorer-backend-7b5ffe27ba68.herokuapp.com/battlechips')
         setBattleChips(response.data)
       } catch (error) {
         console.error("Error getting battle chips: ", error)
@@ -32,7 +32,7 @@ const FolderPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/folders/${userCode}/${folderId}`);
+        const response = await axios.get(`https://netnavi-explorer-backend-7b5ffe27ba68.herokuapp.com/folders/${userCode}/${folderId}`);
         const folderData = response.data;
         const chipsWithUniqueId = folderData.battleChips.map(chip => ({
           ...chip,
@@ -53,7 +53,7 @@ const FolderPage = () => {
     if (!destination) return;
 
     if (destination.droppableId === "folder" && source.droppableId === "battleChipList") {
-      const chipToCopy = { ...battleChips[source.index], uniqueId: generateUniqueId(battleChips[source.index].chipNo)};
+      const chipToCopy = { ...battleChips[source.index], uniqueId: generateUniqueId(battleChips[source.index].chipNo) };
       const updatedFolderContents = [...folderContents, chipToCopy];
       setFolderContents(updatedFolderContents);
     } else if (destination.droppableId === "battleChipList" && source.droppableId === "folder") {
@@ -64,8 +64,8 @@ const FolderPage = () => {
 
   const handleSaveFolder = async () => {
     try {
-      const data = {battleChips: folderContents.map(chip => chip._id)}
-      await axios.put(`/folders/${userCode}/${folderId}`, data);
+      const data = { battleChips: folderContents.map(chip => chip._id) }
+      await axios.put(`https://netnavi-explorer-backend-7b5ffe27ba68.herokuapp.com/folders/${userCode}/${folderId}`, data);
     } catch (error) {
       console.error('Error updating folder: ', error);
     }
