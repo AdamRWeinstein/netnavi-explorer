@@ -61,6 +61,7 @@ const Map = () => {
                                 id="Higsby"
                                 SVG={HigsbyOutline}
                                 width='22px'
+                                height='36px'
                                 onClick={() => navigate('/character/Higsby')}
                                 style={{
                                     position: 'absolute',
@@ -90,7 +91,6 @@ const Map = () => {
             </TransformWrapper>
             {gifVisible && (
                 <img
-                    className="chip-trader-roulette"
                     ref={gifRef}
                     id="chipGif"
                     src="/assets/BattleChips/ChipTrader/chipTraderSpin.gif"
