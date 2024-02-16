@@ -1,16 +1,25 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { useParams } from 'react-router-dom';
+import { UserContext } from './UserContext'
 
 const FolderPage = () => {
   const [battleChips, setBattleChips] = useState([]);
   const [folderContents, setFolderContents] = useState([]);
+  const { folderId } = useParams()
+  const { userCode } = useContext(UserContext)
+
+  const generateUniqueId = (chipNo) => {
+    const uniqueNumber = Date.now() + Math.random();
+    const uniqueHex = uniqueNumber.toString(16);
+    return `${chipNo}-${uniqueHex}`;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('/battlechips')
-        console.log(response)
         setBattleChips(response.data)
       } catch (error) {
         console.error("Error getting battle chips: ", error)
@@ -20,17 +29,49 @@ const FolderPage = () => {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/folders/${userCode}/${folderId}`);
+        const folderData = response.data;
+        const chipsWithUniqueId = folderData.battleChips.map(chip => ({
+          ...chip,
+          uniqueId: generateUniqueId(chip.chipNo)
+        }));
+        console.log(chipsWithUniqueId)
+        setFolderContents(chipsWithUniqueId)
+      } catch (error) {
+        console.error("Error getting folder info: ", error)
+      }
+    }
+
+    fetchData()
+  }, [folderId, userCode])
+
   const onDragEnd = (result) => {
     const { source, destination } = result;
 
     if (!destination) return;
 
     if (destination.droppableId === "folder" && source.droppableId === "battleChipList") {
-      const chipToCopy = battleChips[source.index];
+      const chipToCopy = { ...battleChips[source.index], uniqueId: generateUniqueId(battleChips[source.index].chipNo)};
       const updatedFolderContents = [...folderContents, chipToCopy];
+      setFolderContents(updatedFolderContents);
+    } else if (destination.droppableId === "battleChipList" && source.droppableId === "folder") {
+      const updatedFolderContents = folderContents.filter(chip => chip.uniqueId !== folderContents[source.index].uniqueId);
       setFolderContents(updatedFolderContents);
     }
   };
+
+  const handleSaveFolder = async () => {
+    try {
+      const data = {battleChips: folderContents.map(chip => chip._id)}
+      const response = await axios.put(`/folders/${userCode}/${folderId}`, data);
+      console.log(response)
+    } catch (error) {
+      console.error('Error updating folder: ', error);
+    }
+  }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -40,7 +81,7 @@ const FolderPage = () => {
             <div
               ref={provided.innerRef}
               {...provided.droppableProps}
-              className="battle-chip-list"
+              className="battle-chip-container"
             >
               {battleChips.map((chip, index) => (
                 <Draggable key={chip.chipNo} draggableId={chip.chipNo} index={index}>
@@ -60,14 +101,36 @@ const FolderPage = () => {
             </div>
           )}
         </Droppable>
-
+        <h2>Battle Chip List</h2>
+        {' '}
+        <div className='inline-div'>
+          <h2>Folder</h2>
+          <span
+            className='save-folder-link'
+            onClick={() => handleSaveFolder()}
+          > [SAVE] </span>
+        </div>
         <Droppable droppableId="folder">
           {(provided) => (
             <div
               ref={provided.innerRef}
               {...provided.droppableProps}
-              className="folder"
+              className="folder-container"
             >
+              {folderContents.map((chip, index) => (
+                <Draggable key={chip.uniqueId} draggableId={chip.uniqueId} index={index}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      className="folder-item"
+                    >
+                      <img src={chip.imagePath} alt={chip.name} />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
 
               {provided.placeholder}
             </div>

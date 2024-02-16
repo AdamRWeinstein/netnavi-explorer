@@ -103,9 +103,35 @@ h1 {
   cursor: pointer;
 }
 
-.battle-chip-list {
+.folder-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.battle-chip-container {
   display: flex;
   flex-wrap: wrap;
   height: 396px;
   overflow-y: auto;
+}
+
+.folder-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 406px;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.inline-div {
+  display: flex;
+  align-items: center;
+}
+
+.save-folder-link {
+  margin-left: 10px;
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
 }

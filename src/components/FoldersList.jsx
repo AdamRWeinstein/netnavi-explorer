@@ -12,7 +12,6 @@ const FolderPage = () => {
     const fetchFolders = async () => {
       try {
         const response = await axios.get(`http://localhost:4000/folders/${userCode}`);
-        console.log(response)
         setFolders(response.data)
       } catch (error) {
         console.error('Error fetching folders: ', error)
