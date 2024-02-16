@@ -1,4 +1,4 @@
-const ClickableRegion = ({ SVG, id, width, onClick, style }) => {
+const ClickableRegion = ({ SVG, id, width, height, onClick, style }) => {
     const handleOnClick = (event) => {
         if (event.target.tagName === 'rect') {
             onClick(event);
@@ -9,6 +9,7 @@ const ClickableRegion = ({ SVG, id, width, onClick, style }) => {
         <svg
             id={id}
             width={width}
+            height={height}
             onClick={handleOnClick}
             style={style}
         >
