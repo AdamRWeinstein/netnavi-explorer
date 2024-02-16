@@ -38,7 +38,6 @@ const FolderPage = () => {
           ...chip,
           uniqueId: generateUniqueId(chip.chipNo)
         }));
-        console.log(chipsWithUniqueId)
         setFolderContents(chipsWithUniqueId)
       } catch (error) {
         console.error("Error getting folder info: ", error)
@@ -66,8 +65,7 @@ const FolderPage = () => {
   const handleSaveFolder = async () => {
     try {
       const data = {battleChips: folderContents.map(chip => chip._id)}
-      const response = await axios.put(`/folders/${userCode}/${folderId}`, data);
-      console.log(response)
+      await axios.put(`/folders/${userCode}/${folderId}`, data);
     } catch (error) {
       console.error('Error updating folder: ', error);
     }
