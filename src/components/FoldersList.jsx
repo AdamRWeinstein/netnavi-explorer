@@ -34,6 +34,16 @@ const FolderPage = () => {
     }
   };
 
+  const handleDeleteFolder = async (folderId) => {
+    try {
+      await axios.delete(`/folders/${userCode}/${folderId}`);
+      // Filter out the deleted folder from the folders state
+      setFolders(folders.filter(folder => folder._id !== folderId));
+    } catch (error) {
+      console.error('Error deleting folder: ', error);
+    }
+  };
+
   return (
     <>
       <h2>Your Folders</h2>
@@ -41,9 +51,14 @@ const FolderPage = () => {
         <ul>
           {folders.map((folder) => (
             <li key={folder._id}>
-              <Link to={`/folders/${folder._id}`}>
+              <Link to={`/folders/${folder._id}`} className='folder-link'>
                 {folder.name}
               </Link>
+              { ' ' }
+              <span 
+                className='delete-x' 
+                onClick={() => handleDeleteFolder(folder._id)}
+              > [X] </span>
             </li>
           ))}
         </ul>

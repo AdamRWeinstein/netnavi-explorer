@@ -93,3 +93,12 @@ h1 {
   justify-content: center;
   align-items: center;
 }
+
+.folder-link {
+  color: white;
+}
+
+.delete-x {
+  color: red;
+  cursor: pointer;
+}
