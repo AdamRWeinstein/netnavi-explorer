@@ -40,10 +40,12 @@ Or you can visit the deployed site above!
 
 NetNavi Explorer is meant to be enjoyed as a mobile experience, and the screnshots reflect that.
 
-![ACDC Town](<screenshot-url-1>)
+![ACDC Town](screenshots/ACDCTown.png)
+
 *Explore the vibrant streets and corners of ACDC Town.*
 
-![Higsby's Shop](<screenshot-url-2>)
+![Higsby's Shop](screenshots/HigsbysShop.png)
+
 *Check out the Chip Trader at Higsby's Shop!*
 
 ## Future Updates
