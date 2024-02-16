@@ -102,3 +102,10 @@ h1 {
   color: red;
   cursor: pointer;
 }
+
+.battle-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  height: 396px;
+  overflow-y: auto;
+}
