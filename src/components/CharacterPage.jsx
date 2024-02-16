@@ -9,8 +9,7 @@ const CharacterPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //TODO update call to backend away from localhost
-        const response = await axios.get(`http://localhost:4000/character/${name}`);
+        const response = await axios.get(`https://netnavi-explorer-backend-7b5ffe27ba68.herokuapp.com/character/${name}`);
         setCharacterData(response.data);
       } catch (error) {
         console.error('Error fetching character:', error);
