@@ -11,7 +11,7 @@ const FolderPage = () => {
   useEffect(() => {
     const fetchFolders = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/folders/${userCode}`);
+        const response = await axios.get(`https://netnavi-explorer-backend-7b5ffe27ba68.herokuapp.com/folders/${userCode}`);
         setFolders(response.data)
       } catch (error) {
         console.error('Error fetching folders: ', error)
