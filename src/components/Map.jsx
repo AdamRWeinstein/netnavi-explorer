@@ -1,7 +1,7 @@
 import React from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import ClickableRegion from "./ClickableRegion";
-import acdcTownMap from '../../public/assets/ACDCTownMap.png'
+import acdcTownMap from '../assets/ACDCTownMap.png'
 import LansHouse from '../assets/LansHouse.jsx';
 import YaisHouse from '../assets/YaisHouse.jsx'
 import MaylsHouse from '../assets/MaylsHouse.jsx'

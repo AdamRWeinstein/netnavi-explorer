@@ -1,7 +1,7 @@
 import React from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import ClickableRegion from "./ClickableRegion";
-import ShopInterior from '../../public/assets/ShopInterior.png';
+import ShopInterior from '../assets/ShopInterior.png'
 import HigsbyOutline from '../assets/HigsbyOutline'
 import ChipTrader from '../assets/ChipTrader'
 import { useNavigate } from "react-router-dom";
