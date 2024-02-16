@@ -14,32 +14,34 @@ const Map = () => {
 
     useEffect(() => {
         if (gifVisible && gifRef.current) {
-            let gif = new SuperGif({ 
+            let gif = new SuperGif({
                 gif: gifRef.current,
                 auto_play: 0,
-                progressbar_height: '100%'
+                progressbar_height: '129'
             });
             gif.load(() => {
                 let speed = "fast"
                 let final = Math.floor(Math.random() * 10) + 50
                 const moveToRandomFrame = (count = 0) => {
-                    if (count === final) return; 
+                    if (count === final) return;
                     if (count === 30) speed = "medium"
                     if (count === 45) speed = "slow"
                     if (count === final - 2) speed = "slowest"
-    
-                    const totalFrames = gif.get_length(); 
-                    const randomFrame = Math.floor(Math.random() * totalFrames); 
+
+                    const totalFrames = gif.get_length();
+                    const randomFrame = Math.floor(Math.random() * totalFrames);
                     gif.move_to(randomFrame);
                     setTimeout(() => moveToRandomFrame(count + 1), speed === "fast" ? 100 : speed === "medium" ? 200 : speed === "slow" ? 500 : 1000);
                 };
-    
+
                 moveToRandomFrame();
             });
         }
     }, [gifVisible]);
 
-    const spinChip = () => {setGifVisible(true)}
+    const spinChip = () => {
+        setGifVisible(true)
+    }
 
     return (
         <div className="shop-container">
